@@ -1,0 +1,514 @@
+import Cocoa
+import Foundation
+
+// variables
+
+var name = "Ted"
+name = "Rebbaca"
+print(name)
+
+//constants
+
+let user = "Daphine"
+print(user)
+
+let actor = "Tom Cruise "
+
+
+let quote = "He tapped a sign sayiing \"Believe\" and walked away."
+print(quote)
+
+
+let movie = """
+a day in the life of an apple engineer
+"""
+print(movie)
+
+
+//to count
+print(movie.count)
+print(quote.hasPrefix("He"))
+print(quote.hasSuffix("away"))
+
+
+let score = 10
+
+let higherScore = score + 10
+let halvedScore = score / 2
+
+var counter = 10
+counter += 5
+
+let number = 120
+print(number.isMultiple(of: 3))
+
+let id = Int.random(in: 1...1000)
+
+//double
+let scores = 3.1
+
+//boolean
+let gooddogs = true
+let game = false
+var isSaved = false
+isSaved.toggle()
+
+
+//string interpollation
+
+let nameo = "Taylor"
+
+let age = 26
+let message = "I'm \(nameo) and I'm \(age) years old."
+print(message)
+
+
+// arrays
+var colors = ["Red", "Green","Blue"]
+let numbers = [4,8,15,16]
+var reading = [0.1, 0.5, 0.8]
+
+
+print(colors[0])
+print(reading[2])
+colors.append("Tartand")
+
+//dictonaaryies
+
+let employee = ["name":"Taylor",
+                 "job": "Singer"
+]
+
+print(employee["job", default: "unknown"])
+
+//sets
+var numberss = Set([1,1,1,1,3,4,5,6,])
+print(numberss)
+
+//only insert in sets but dont append/
+
+numberss.insert(10)
+numberss.contains(11)
+
+//emums/
+
+enum weekday {
+    case monday, tuesday, wednesday, thursday, friday
+}
+var day = weekday.monday
+day = .friday
+
+
+// type annotation
+var Score: Double = 0
+
+
+let player: String = "Roy"
+let luckyNumber:Int = 13
+let pi: Double = 3.141
+var isEnabled: Bool = true
+var albums: Array<String> = ["Red", "fearless"]
+var userrr: [String: String] = ["id": "@twoStraws"]
+var books: Set<String>  = Set(["The Bluest Eye", "Foundation" ])
+
+var teams: [String] = [String]()
+var clues = [String]()
+
+enum UIStyle {
+    case light, dark, system
+}
+
+var style: UIStyle = .light
+
+// if else if and else
+
+let agee = 16
+
+if agee  < 12 {
+    print("you cant vote")
+} else if agee < 18 {
+    
+    print("you can vote soon")
+    
+} else {
+    print("you can vote now")
+}
+
+let temp = 26
+
+if temp > 20 && temp < 30 {
+    print("Its a nice day.")
+}
+        
+//switch statements
+enum Weather {
+    case sun, rain ,Wind
+}
+
+let forecast = Weather.sun
+
+switch forecast {
+case.sun:
+    print("It is a nice day")
+case.rain:
+    print("pack an umbrella")
+default:
+    print("it should be okayyy")
+}
+
+//terrinary condition
+
+let ageee = 18
+let canVote = ageee <= 18 ? "Yes" : "No"
+print(canVote)
+
+
+//loops
+let platforms = ["macOS", "IOS" , "tvOS", "watchOS"]
+
+for os in platforms {
+    print(("Swift works on \(os)"))
+}
+
+for i in 1..<12{
+    print("5 X \(i) is \(5 * i)")
+}
+var lyric = "Haters gonna"
+
+for _ in 1...5 {
+    lyric+=" Hate"
+}
+print(lyric)
+
+
+var count = 10
+
+while count > 0 {
+    print(("\(count)..."))
+    count-=1
+}
+
+let files = ["me.jpg", "work.txt", "sophie.jpg"]
+
+for file in files {
+    
+    if file.hasSuffix(".jpg") == false {
+        continue
+    }
+    print("Found picture: \(file)")
+}
+
+
+//functions
+
+func printTimesTable(num:Int) {
+    
+    for i in  1...12 {
+            print("\(i) x \(number) is \(i * number)")
+    }
+}
+
+
+printTimesTable(num: 8)
+
+func rollDice()->Int {
+    
+     Int.random(in: 1...6)
+}
+
+let result = rollDice()
+print(result)
+
+
+
+///Tuples + Functions
+///
+func getUser() -> (firstName: String, lastName: String) {
+    
+    (firstName: "Taylor", lastName: "Swift")
+    
+}
+let userrrr = getUser()
+print("Name: \(userrrr.firstName) \(userrrr.lastName)")
+
+
+
+func isUppercase(_ string: String) -> Bool {
+    string == string.uppercased()
+    
+}
+
+let string = "HELLO WORLD"
+
+let resultss = isUppercase(string)
+
+func printTimesTable(for number: Int) {
+    for i in 1...12 {
+        print("\(i) x \(number) is \(i * number)")
+    }
+}
+printTimesTable(for: 5)
+
+
+//error handling in functions
+
+enum PasswordError: Error {
+    case short , obvious
+}
+
+func checkPassword(_ password: String) throws -> String {
+    
+    if password.count < 5 {
+        throw PasswordError.short
+    }
+    if password == "12345"{
+        throw PasswordError.obvious
+    }
+    if password.count < 10 {
+        
+        return "OK"
+    } else {
+        return "Good"
+    }
+}
+
+do {
+    let result = try checkPassword("12345")
+    print("Rating: \(result)")
+} catch PasswordError.obvious {
+    print("I have the same combinattion on my luggage!")
+}  catch {
+    print("There was an error")
+}
+
+
+//closure
+
+let team = ["Gloria", "Suzanne", "Tiffany", "Tasha"]
+
+// How to filter with closures
+
+let onlyT = team.filter({ (name: String) -> Bool in
+    return name.hasPrefix("T")
+})
+
+
+//trailing syntax
+let onlyTT = team.filter { $0.hasPrefix("T") }
+
+
+print(onlyT)
+print(onlyTT)
+
+//DidSet
+
+struct Game {
+    var scores = 0 {
+        didSet {
+            print("Score is now \(score)")
+        }
+    }
+}
+
+var gamer = Game()
+gamer.scores += 10
+gamer.scores -= 3
+
+
+struct Player {
+    let name: String
+    let number: Int
+    
+    
+    init(name: String) {
+        self.name = name
+        number = Int.random(in: 1...99)
+    }
+}
+//Access control
+struct BankAccount {
+    private(set) var funds = 0
+    
+    mutating func deposit(amount: Int) {
+        funds += amount
+    }
+    mutating func withdraw(amount: Int) -> Bool {
+        if funds > amount {
+            funds -= amount
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
+let account = BankAccount(funds: 100)
+print(account.funds)
+//account.funds += 100
+
+
+
+//Static properties and methods
+
+struct AppData {
+    static let version = "1.3 beta 2"
+    static let settingsFile = "settings.json"
+}
+
+print(AppData.version)
+
+
+//Classes
+
+class Employee {
+    let hours: Int
+    init(hours: Int) {
+        self.hours = hours
+    }
+    
+    func printSummary() {
+        print("I work \(hours) hours a day")
+    }
+}
+
+class Developer: Employee {
+    func work() {
+        print("I'm coding for \(hours) hours a day.")
+    }
+    override func printSummary() {
+        print("I speend \(hours) a day fighting over tabs vs spaces.")
+    }
+}
+
+let novall = Developer(hours: 8)
+novall.work()
+novall.printSummary()
+
+class Vehicle {
+    let isElectric: Bool
+    
+    init(isElectric: Bool) {
+        self.isElectric = isElectric
+    }
+}
+
+class Car: Vehicle {
+    let isConveritble: Bool
+    
+    init(isElectric: Bool, isConveritble: Bool) {
+        self.isConveritble = isConveritble
+        super.init(isElectric: isElectric)
+    }
+}
+
+
+ 
+ 
+//Protocol
+
+
+
+protocol Vehiclee {
+    func estimateTime(for distance: Int) -> Int
+    func travel(distance: Int)
+}
+
+struct Carr: Vehiclee {
+    func estimateTime(for distance: Int) -> Int {
+        distance / 50
+    }
+    
+    func travel(distance: Int) {
+        print("I'm driving \(distance)km")
+    }
+    
+    func openSunRoof() {
+        print("It's a nice day!")
+    }
+    
+    
+}
+func commute(distance: Int, using vehice: Vehiclee) {
+    if vehice.estimateTime(for: distance) > 100 {
+        print("Too slow!")
+    } else {
+        vehice.travel(distance: distance)
+    }
+}
+
+let car = Carr()
+commute(distance: 100, using: car)
+
+
+//Extensions
+
+extension String {
+    func trimmed() -> String {
+        self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
+    mutating func trim() {
+        self = self.trimmed()
+        
+    }
+}
+
+var quotee = "    The truth is rarely pure and never simple     "
+//let trimmed = quote.trimmed()
+quotee.trim()
+
+
+//Optionals represents the absence of Data
+
+
+let opposites = [
+    "Mario": "Wario",
+    "Luigi": "Waluigi"
+]
+
+let peachOpposite = opposites["Peach"]
+
+
+//Guard let to unward optionals
+
+func PrintSquare (of number: Int?) {
+    guard let number = number else {
+        print("Missing inout")
+        return
+    }
+    
+    print("\(number) x \(number) is \(number * number)")
+    
+}
+
+
+//nill Co-ellisant operator
+
+let tvShows = ["Archer", "Babylon 5", "Ted lasso"]
+let favorite = tvShows.randomElement() ?? "None"
+
+let input = ""
+let numbber = Int(input) ?? 0
+
+
+//optional channing
+let namme = ["Arya", "Bran" , "Robb", "Sansa"]
+let chosen = namme.randomElement()?.uppercased()
+print("Next in line: \(chosen ?? "No one")")
+
+
+//error handling
+
+enum UserError: Error {
+    case badID, networkFailed
+}
+
+
+func getUser(id: Int) throws -> String {
+    throw UserError.networkFailed
+}
+
+if let user = try? getUser(id: 23) {
+    print("User: \(user)")
+}
+
